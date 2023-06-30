@@ -1,0 +1,55 @@
+.admin-navbar {
+    background-color: #ffffff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hrclass{
+    max-width: 200px;
+  }
+  
+  .admin-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .admin-navbar li {
+    margin-bottom: 10px;
+  }
+  
+  .admin-navbar a {
+  display: block;
+  text-decoration: none;
+  color: rgb(44 56 74 / 68%);
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+  }
+  
+  .admin-navbar a:hover {
+    background: linear-gradient(to bottom right, #5046e5, #5046e5);
+    color: #ffffff;
+  }
+
+  .nav-icon{
+    padding-right: 10px;
+  }
+
+  .navheading{
+    font-weight: bold;
+    font-size: 15px;
+    padding-right: 10px;
+    color: rgb(44 56 74 / 68%);
+  }
+  
+  .sub-menu hr{
+    margin-top: 10px;
+  }

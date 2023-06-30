@@ -1,12 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import OtpVerification from './Components/otpVerification/OtpVerification';
+import UserLogin from './Components/userLogin/UserLogin';
+import Navbar from './Components/navBar/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <OtpVerification></OtpVerification>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navbar />} />
+        <Route path="/userlogin" element={<UserLogin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -37,13 +37,11 @@ function OtpVerification() {
 
   return (
     <div className="container">
-      <div className="row justify-content-md-center">
-        <div className="col-md-4 text-center">
-          <div className="row">
-            <div className="col-sm-12 mt-5 bgWhite">
+     
+            <div className="bgWhite">
               <div className="title">Verify OTP</div>
-
               <form onSubmit={handleSubmit} className="mt-5">
+                <div className='otpbox'>
                 <input
                   className="otp"
                   type="text"
@@ -72,16 +70,15 @@ function OtpVerification() {
                   onKeyUp={() => tabChange(4)}
                   maxLength="1"
                 />
+                
                 <hr className="mt-4" />
                 <button type="submit" className="btn btn-primary btn-block mt-4 mb-4 customBtn">
                   Verify
                 </button>
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
