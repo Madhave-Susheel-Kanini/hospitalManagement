@@ -117,6 +117,48 @@ function Navbar() {
               <ul className="sub-menu">
                 <hr/>
                 <li>
+                  <Link to="/doctorauthapproval">
+                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
+                    Doctors
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <div className="nav-group" onClick={() => handleExpand(3)}>
+              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
+              <span className='navheading'>DIAGNOSIS</span>
+              <FontAwesomeIcon
+                icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
+                className="arrow"
+              />
+            </div>
+            {isItemExpanded(3) && (
+              <ul className="sub-menu">
+                <hr/>
+                <li>
+                  <Link to="/admin/diseases">
+                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
+                    Diseases
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <div className="nav-group" onClick={() => handleExpand(3)}>
+              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
+              <span className='navheading'>Authorization</span>
+              <FontAwesomeIcon
+                icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
+                className="arrow"
+              />
+            </div>
+            {isItemExpanded(3) && (
+              <ul className="sub-menu">
+                <hr/>
+                <li>
                   <Link to="/admin/diseases">
                     <FontAwesomeIcon icon={faVial} className="nav-icon" />
                     Diseases

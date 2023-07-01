@@ -41,13 +41,14 @@
 
   .nav-icon{
     padding-right: 10px;
+    color: rgb(42, 42, 42);
   }
 
   .navheading{
     font-weight: bold;
     font-size: 15px;
     padding-right: 10px;
-    color: rgb(44 56 74 / 68%);
+    color: rgba(0, 0, 0, 0.68);
   }
   
   .sub-menu hr{
