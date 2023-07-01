@@ -11,6 +11,22 @@ namespace HospitalManagement.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Billings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PatientFirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PatientEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Service = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Total = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Billings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Doctors",
                 columns: table => new
                 {
@@ -111,6 +127,9 @@ namespace HospitalManagement.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Appointments");
+
+            migrationBuilder.DropTable(
+                name: "Billings");
 
             migrationBuilder.DropTable(
                 name: "Patients");

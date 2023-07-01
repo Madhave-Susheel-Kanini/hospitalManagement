@@ -49,6 +49,31 @@ namespace HospitalManagement.Migrations
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("HospitalManagement.Models.Billing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PatientEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatientFirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Service")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Total")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Billings");
+                });
+
             modelBuilder.Entity("HospitalManagement.Models.Doctor", b =>
                 {
                     b.Property<int>("Id")

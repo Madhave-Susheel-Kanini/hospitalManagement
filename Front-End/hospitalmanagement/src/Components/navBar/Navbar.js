@@ -22,6 +22,7 @@ function Navbar() {
   return (
     <div>
       <nav className="admin-navbar">
+      <div className="nav-container">
         <ul>
           <li>
             <Link to="/admin/dashboard">
@@ -84,6 +85,27 @@ function Navbar() {
             )}
           </li>
           <li>
+            <div className="nav-group" onClick={() => handleExpand(7)}>
+              <FontAwesomeIcon icon={faHospital} className="nav-icon" />
+              <span className='navheading'>BILLING</span>
+              <FontAwesomeIcon
+                icon={isItemExpanded(7) ? faAngleDown : faAngleRight}
+                className="arrow"
+              />
+            </div>
+            {isItemExpanded(7) && (
+              <ul className="sub-menu">
+                <hr/>
+                <li>
+                  <Link to="/billgenerate">
+                    <FontAwesomeIcon icon={faFolder} className="nav-icon" />
+                    Generate Bill
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
             <div className="nav-group" onClick={() => handleExpand(2)}>
               <FontAwesomeIcon icon={faUsers} className="nav-icon" />
               <span className='navheading'>CONSULTANTS</span>
@@ -96,7 +118,7 @@ function Navbar() {
               <ul className="sub-menu">
                 <hr/>
                 <li>
-                  <Link to="/admin/patients">
+                  <Link to="/patientlist">
                     <FontAwesomeIcon icon={faUser} className="nav-icon" />
                     Patients
                   </Link>
@@ -105,9 +127,30 @@ function Navbar() {
             )}
           </li>
           <li>
-            <div className="nav-group" onClick={() => handleExpand(3)}>
+            <div className="nav-group" onClick={() => handleExpand(4)}>
               <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
               <span className='navheading'>DIAGNOSIS</span>
+              <FontAwesomeIcon
+                icon={isItemExpanded(4) ? faAngleDown : faAngleRight}
+                className="arrow"
+              />
+            </div>
+            {isItemExpanded(4) && (
+              <ul className="sub-menu">
+                <hr/>
+                <li>
+                  <Link to="/admin/diseases">
+                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
+                    Diseases
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <div className="nav-group" onClick={() => handleExpand(3)}>
+              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
+              <span className='navheading'>AUTHORIZATION</span>
               <FontAwesomeIcon
                 icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
                 className="arrow"
@@ -119,55 +162,14 @@ function Navbar() {
                 <li>
                   <Link to="/doctorauthapproval">
                     <FontAwesomeIcon icon={faVial} className="nav-icon" />
-                    Doctors
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(3)}>
-              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
-              <span className='navheading'>DIAGNOSIS</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(3) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/admin/diseases">
-                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
-                    Diseases
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(3)}>
-              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
-              <span className='navheading'>Authorization</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(3) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/admin/diseases">
-                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
-                    Diseases
+                    Doctor Approval
                   </Link>
                 </li>
               </ul>
             )}
           </li>
         </ul>
+        </div>
       </nav>
     </div>
   );

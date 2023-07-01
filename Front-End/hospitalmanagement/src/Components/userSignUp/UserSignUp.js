@@ -13,7 +13,6 @@ function Signup() {
     const [country, setCountry] = useState('');
     const [address, setAddress] = useState('');
     const [gender, setGender] = useState('');
-    const [status, setStatus] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
