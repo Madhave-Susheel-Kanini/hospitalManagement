@@ -50,8 +50,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -o-appearance: radio !important;
     -ms-appearance: radio !important; }
   
-  img {
-    max-width: 100%;
+  .img1 {
+    max-width: 450px;
     height: auto; }
   
   figure {
@@ -159,25 +159,27 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin-bottom: 50px;
     text-align: center; }
   
-  .form-submit {
+  .form-submit1 {
     display: inline-block;
     background: #6dabe4;
     color: #fff;
     border-bottom: none;
-    width: auto;
-    padding: 15px 39px;
+    width: 166px;
+    height: 50px;
+    /* padding: 15px 39px; */
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     cursor: pointer; }
     .form-submit:hover {
       background: #4292dc; }
   
   #signin {
-    margin-top: 16px; }
+    margin-top: 2px; 
+  }
   
   .signup-image-link {
     font-size: 14px;
@@ -441,6 +443,10 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       -webkit-order: 2;
       -o-order: 2;
       -ms-order: 2; }
+
+      .selectbox{
+        width: 300px;
+      }
   
     .signup-form, .signup-image, .signin-form, .signin-image {
       width: auto; }
@@ -453,7 +459,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       -ms-justify-content: center; }
   
     .form-button {
-      text-align: center; }
+      text-align: center; 
+    }
   
     .signin-form {
       order: 1;

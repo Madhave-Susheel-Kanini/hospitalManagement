@@ -82,7 +82,7 @@ function OtpVerification() {
   };
 
   return (
-    <div className="container1">
+    <div className="bigbox">
       <div className="bgWhite">
         <span className='otpclick' onClick={handleGetOTP}>Click here to resend verification code</span>
         <div className="title">Verify OTP</div>
@@ -118,10 +118,11 @@ function OtpVerification() {
             />
 
             <hr className="mt-4" />
-            <button type="submit" className="btn btn-primary btn-block mt-4 mb-4 customBtn">
+            
+          </div>
+          <button type="submit" className="btn btn-primary btn-block mt-4 mb-4 customBtn">
               Verify
             </button>
-          </div>
         </form>
         {/* <button className="btn btn-primary btn-block mt-4 mb-4" >
           Get OTP

@@ -1,4 +1,5 @@
 using HospitalManagement.Models;
+using HospitalManagement.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,6 +20,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
+builder.Services.AddScoped<IDoctor, DoctorRepository>();
+builder.Services.AddScoped<IPatient, PatientRepository>();
+builder.Services.AddScoped<IAppointment, AppointmentRepository>();
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
 {
@@ -87,6 +91,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseCors("MyCorsPolicy");
 app.UseAuthorization();

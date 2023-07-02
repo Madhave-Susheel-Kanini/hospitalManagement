@@ -70,7 +70,7 @@
     z-index: 9999;
   }
   
-  .modal {
+  .modalarea {
     background-color: #fff;
     width: 400px;
     padding: 20px;
@@ -89,7 +89,7 @@
     border-radius: 5px;
   }
   
-  .modal label {
+  .modal label1 {
     font-weight: bold;
   }
   
@@ -109,7 +109,7 @@
     margin-bottom: 10px;
   }
   
-  .modal-checkboxes label {
+  .modal-checkboxes label1 {
     margin-right: 10px;
   }
   

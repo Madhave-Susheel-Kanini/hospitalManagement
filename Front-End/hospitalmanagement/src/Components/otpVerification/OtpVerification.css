@@ -1,4 +1,4 @@
-.container1 {
+.bigbox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
   
   .bgWhite {
     background-color: #fff;
-    max-width: 350px;
+    max-width: 450xp;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -22,19 +22,22 @@
   
   .otpbox {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    color: navy;
   }
   
   .otp {
     
-    height: 40px;
-    text-align: center;
+    /* height: 40px; */
+    text-align: left;
+    height: 50px;
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
     color: black;
+    width: 80px;
   }
   
   .customBtn {

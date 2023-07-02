@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,156 +22,74 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="admin-navbar">
-      <div className="nav-container">
-        <ul>
-          <li>
-            <Link to="/admin/dashboard">
-              <FontAwesomeIcon icon={faHome} className="nav-icon" />
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(0)}>
-              <FontAwesomeIcon icon={faUser} className="nav-icon" />
-              <span className='navheading'>GENERAL</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(0) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
+      <div class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+          <div class="media d-flex align-items-center">
+            <div class="media-body">
+              <h4 class="m-0">HOSPITAL MANAGEMENT</h4>
+              <p class="font-weight-light text-muted mb-0">Dashboard</p>
             </div>
-            {isItemExpanded(0) && (
-              <ul className="sub-menu">
-                <hr className='hrclass'/>
-                <li>
-                  <Link to="/admin/logout">
-                    <FontAwesomeIcon icon={faSignOutAlt} className="nav-icon" />
-                    Logout
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/settings">
-                    <FontAwesomeIcon icon={faCog} className="nav-icon" />
-                    Settings
-                  </Link>
-                </li>
-              </ul>
-            )}
+          </div>
+        </div>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+          <li class="nav-item">
+            <a href="patientlist" class="nav-link text-dark font-italic">
+              <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+              Patients
+            </a>
           </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(1)}>
-              <FontAwesomeIcon icon={faHospital} className="nav-icon" />
-              <span className='navheading'>HOSPITAL</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(1) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(1) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/admin/departments">
-                    <FontAwesomeIcon icon={faFolder} className="nav-icon" />
-                    Departments
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/doctors">
-                    <FontAwesomeIcon icon={faUserMd} className="nav-icon" />
-                    Doctors
-                  </Link>
-                </li>
-              </ul>
-            )}
+          <li class="nav-item">
+            <a href="doctorlist" class="nav-link text-dark font-italic">
+              <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+              Doctors
+            </a>
           </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(7)}>
-              <FontAwesomeIcon icon={faHospital} className="nav-icon" />
-              <span className='navheading'>BILLING</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(7) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(7) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/billgenerate">
-                    <FontAwesomeIcon icon={faFolder} className="nav-icon" />
-                    Generate Bill
-                  </Link>
-                </li>
-              </ul>
-            )}
+          <li class="nav-item">
+            <a href="doctorauthapproval" class="nav-link text-dark font-italic">
+              <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+              Doctor Approval
+            </a>
           </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(2)}>
-              <FontAwesomeIcon icon={faUsers} className="nav-icon" />
-              <span className='navheading'>CONSULTANTS</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(2) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(2) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/patientlist">
-                    <FontAwesomeIcon icon={faUser} className="nav-icon" />
-                    Patients
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(4)}>
-              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
-              <span className='navheading'>DIAGNOSIS</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(4) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(4) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/admin/diseases">
-                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
-                    Diseases
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
-            <div className="nav-group" onClick={() => handleExpand(3)}>
-              <FontAwesomeIcon icon={faNotesMedical} className="nav-icon" />
-              <span className='navheading'>AUTHORIZATION</span>
-              <FontAwesomeIcon
-                icon={isItemExpanded(3) ? faAngleDown : faAngleRight}
-                className="arrow"
-              />
-            </div>
-            {isItemExpanded(3) && (
-              <ul className="sub-menu">
-                <hr/>
-                <li>
-                  <Link to="/doctorauthapproval">
-                    <FontAwesomeIcon icon={faVial} className="nav-icon" />
-                    Doctor Approval
-                  </Link>
-                </li>
-              </ul>
-            )}
+          <li class="nav-item">
+            <a href="billgenerate" class="nav-link text-dark font-italic">
+              <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+              Bill Generate
+            </a>
           </li>
         </ul>
-        </div>
-      </nav>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+          <li class="nav-item">
+            <a href="activebillings" class="nav-link text-dark font-italic">
+              <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+              Invoice Download
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="activebillings" class="nav-link text-dark font-italic">
+              <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
+              Active Billings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-dark font-italic">
+              <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
+              Pie charts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-dark font-italic">
+              <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
+              Line charts
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
+using HospitalManagement.Repository;
 
 namespace HospitalManagement.Controllers
 {
@@ -13,111 +14,69 @@ namespace HospitalManagement.Controllers
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        private readonly DoctorPatientContext _context;
+        private readonly IPatient _patientRepository;
 
-        public PatientsController(DoctorPatientContext context)
+        public PatientsController(IPatient patientRepository)
         {
-            _context = context;
+            _patientRepository = patientRepository;
         }
 
-        // GET: api/Patients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
+        public async Task<ActionResult<IEnumerable<Patient>>> Get()
         {
-          if (_context.Patients == null)
-          {
-              return NotFound();
-          }
-            return await _context.Patients.ToListAsync();
+            var patients = await _patientRepository.GetPatients();
+            return Ok(patients);
         }
-
-        // GET: api/Patients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Patient>> GetPatient(int id)
+        public async Task<ActionResult<Patient>> Get(int id)
         {
-          if (_context.Patients == null)
-          {
-              return NotFound();
-          }
-            var patient = await _context.Patients.FindAsync(id);
-
+            var patient = await _patientRepository.GetPatientById(id);
             if (patient == null)
             {
                 return NotFound();
             }
-
-            return patient;
+            return Ok(patient);
         }
-
-        // PUT: api/Patients/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPatient(int id, Patient patient)
+        [HttpPost]
+        public async Task<ActionResult<Patient>> Post([FromForm] Patient patient, IFormFile imageFile)
         {
-            if (id != patient.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(patient).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                var createdPatient = await _patientRepository.CreatePatient(patient, imageFile);
+                return CreatedAtAction("Get", new { id = createdPatient.Id }, createdPatient);
+
             }
-            catch (DbUpdateConcurrencyException)
+            catch (ArgumentException ex)
             {
-                if (!PatientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError("", ex.Message);
+                return BadRequest(ModelState);
             }
-
-            return NoContent();
         }
-
-        // POST: api/Patients
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Patient>> PostPatient(Patient patient)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Patient>> Put(int id, [FromForm] Patient patient, IFormFile imageFile)
         {
-          if (_context.Patients == null)
-          {
-              return Problem("Entity set 'DoctorPatientContext.Patients'  is null.");
-          }
-            _context.Patients.Add(patient);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPatient", new { id = patient.Id }, patient);
+            try
+            {
+                var updatedPat = await _patientRepository.UpdatePatient(id, patient, imageFile);
+                return Ok(updatedPat);
+            }
+            catch (ArgumentException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return BadRequest(ModelState);
+            }
         }
-
-        // DELETE: api/Patients/5
+        //[Authorize(Roles = "Course")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePatient(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (_context.Patients == null)
+            var result = await _patientRepository.DeletePatient(id);
+            if (result)
             {
-                return NotFound();
+                return NoContent();
             }
-            var patient = await _context.Patients.FindAsync(id);
-            if (patient == null)
-            {
-                return NotFound();
-            }
-
-            _context.Patients.Remove(patient);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool PatientExists(int id)
-        {
-            return (_context.Patients?.Any(e => e.Id == id)).GetValueOrDefault();
+            return NotFound();
         }
     }
 }

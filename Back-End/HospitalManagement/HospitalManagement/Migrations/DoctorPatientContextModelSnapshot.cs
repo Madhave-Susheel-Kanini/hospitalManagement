@@ -42,6 +42,9 @@ namespace HospitalManagement.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
@@ -83,6 +86,9 @@ namespace HospitalManagement.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DocImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -132,6 +138,9 @@ namespace HospitalManagement.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")

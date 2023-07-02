@@ -37,6 +37,14 @@ function Signup() {
             })
             .then((response) => {
                 console.log('New item added:', response.data);
+                setName('');
+                setAddress('');
+                setCountry('');
+                setGender('');
+                setRole('');
+                setPhone('');
+                setEmail('');
+                setPassword('');
                 // Perform any necessary actions after successful POST request
             })
             .catch((error) => {
@@ -51,12 +59,12 @@ function Signup() {
                 <div className="container1">
                     <div className="signin-content1">
                         <div className="signin-image1">
-                            <figure><img src={signinimage} alt='' /></figure>
+                            <figure><img className='img1' src={signinimage} alt='' /></figure>
                             <br></br>
-                            <span className="signup-image-link">Create an account</span>
+                            {/* <span className="signup-image-link">Create an account</span> */}
                         </div>
                         <div className="signin-form">
-                            <h2 className="form-title">Sign In</h2>
+                            <h2 className="form-title">Sign Up</h2>
                             <form method="POST" onSubmit={handleSubmit} className="register-form" id="login-form">
                                 <div className="form-group">
                                     <label><i className="zmdi zmdi-account material-icons-name"></i></label>
@@ -73,6 +81,7 @@ function Signup() {
                                 <div className="form-group">
                                     <label><i className="zmdi zmdi-lock"></i></label>
                                     <select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role">
+                                        <option value="">Select an option</option>
                                         <option value="patient">Patient</option>
                                         <option value="doctor">Doctor</option>
                                     </select>
@@ -99,7 +108,7 @@ function Signup() {
                                     <label className="label-agree-term"><span><span></span></span>Remember me</label>
                                 </div>
                                 <div className="form-group form-button">
-                                    <input type="submit" name="signin" id="signin" className="form-submit" value="Log in" />
+                                    <input type="submit" name="signin" id="signin" className="form-submit1" value="Sign Up" />
                                 </div>
                             </form>
                             {/* <div className="social-login">

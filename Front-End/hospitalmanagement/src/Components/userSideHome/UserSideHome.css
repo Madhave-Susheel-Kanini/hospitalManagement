@@ -1,0 +1,49 @@
+.navbarabc {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  .navbar-listabc {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .navbar-itemabc {
+    margin: 0 10px;
+  }
+  
+  .navbar-linkabc {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .containerabc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin-top: 10px;
+  }
+  
+  .cardabc {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+  }
+  
+  .card-titleabc {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card-contentabc {
+    font-size: 14px;
+    color: #666;
+  }
+  

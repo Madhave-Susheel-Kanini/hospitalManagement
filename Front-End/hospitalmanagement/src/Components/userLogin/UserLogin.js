@@ -15,55 +15,55 @@ function UserLogin() {
 
 	useEffect(() => {
 		sessionStorage.clear();
-	  }, []);
+	}, []);
 
-	  const proceedLoginUsingAPI = (e) => {
+	const proceedLoginUsingAPI = (e) => {
 		e.preventDefault();
 		if (validate()) {
-		  const inputObj = { name: name, password: password };
-		  const url = `https://localhost:7193/api/Token/${role}`;
-	  
-		  fetch(url, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(inputObj),
-		  })
-			.then((res) => res.text())
-			.then((resp) => {	
-			  console.log(resp);
-			  toast.success('Success');
-			  
-			  // Store the token in a cookie
-			document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
-			navigate('/otpauth')
-	  
-			  localStorage.setItem('name', name);
-			  localStorage.setItem('email', email)
-			})
-			.catch((err) => {
-			  toast.error('Login Failed due to: ' + err.message);
-			});
-		}
-	  };
+			const inputObj = { name: name, password: password };
+			const url = `https://localhost:7193/api/Token/${role}`;
 
-	  const getCookieExpirationDate = () => {
+			fetch(url, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(inputObj),
+			})
+				.then((res) => res.text())
+				.then((resp) => {
+					console.log(resp);
+					toast.success('Success');
+
+					// Store the token in a cookie
+					document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
+					navigate('/otpauth')
+
+					localStorage.setItem('name', name);
+					localStorage.setItem('email', email)
+				})
+				.catch((err) => {
+					toast.error('Login Failed due to: ' + err.message);
+				});
+		}
+	};
+
+	const getCookieExpirationDate = () => {
 		const expirationDate = new Date();
 		expirationDate.setMinutes(expirationDate.getMinutes() + 10); // Set expiration to 10 minutes from now
 		return expirationDate.toUTCString();
-	  };
+	};
 
-	  const validate = () => {
+	const validate = () => {
 		let result = true;
 		if (name === '' || name === null) {
-		  result = false;
-		  toast.warning('Please Enter Username');
+			result = false;
+			toast.warning('Please Enter Username');
 		}
 		if (password === '' || password === null) {
-		  result = false;
-		  toast.warning('Please Enter Password');
+			result = false;
+			toast.warning('Please Enter Password');
 		}
 		return result;
-	  };
+	};
 
 
 
@@ -75,7 +75,7 @@ function UserLogin() {
 						<div className="signin-image">
 							<figure><img src={signinimage} alt='' /></figure>
 							<br></br>
-							<span className="signup-image-link">Create an account</span>
+							{/* <span className="signup-image-link">Create an account</span> */}
 						</div>
 						<div className="signin-form">
 							<h2 className="form-title">Sign In</h2>

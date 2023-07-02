@@ -10,12 +10,15 @@ import PatientList from './Components/patientList/PatientList';
 import BillGenerate from './Components/billGenerate/BillGenerate';
 import InvoiceDownload from './Components/invoiceDownload/InvoiceDownload';
 import ActiveBilling from './Components/activeBilling/ActiveBilling';
+import DoctorList from './Components/doctorList/DoctorList';
+import UserSideHome from './Components/userSideHome/UserSideHome';
 
 function App() {
   const shouldRenderSidebar =
     window.location.pathname !== '/userlogin' &&
     window.location.pathname !== '/otpauth' &&
     window.location.pathname !== '/invoicedownload' &&
+    window.location.pathname !== '/userside' &&
     window.location.pathname !== '/usersignup';
 
   return (
@@ -32,6 +35,8 @@ function App() {
             <Route path="/billgenerate" element={<BillGenerate />} />
             <Route path="/invoicedownload" element={<InvoiceDownload />} />
             <Route path="/activebillings" element={<ActiveBilling />} />
+            <Route path="/doctorlist" element={<DoctorList />} />
+            <Route path="/userside" element={<UserSideHome />} />
           </Routes>
         </div>
       </div>

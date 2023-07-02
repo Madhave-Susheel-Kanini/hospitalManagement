@@ -1,61 +1,77 @@
-.admin-navbar {
-    background-color: #ffffff;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-  }
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
 
-  .hrclass{
-    max-width: 200px;
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+.nav-link:hover{
+  background-color: #c1bcbc;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
   }
-  
-  .admin-navbar ul {
-    list-style: none;
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
     margin: 0;
-    padding: 0;
   }
-  
-  .admin-navbar li {
-    margin-bottom: 10px;
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
   }
-  
-  .admin-navbar a {
-  display: block;
-  text-decoration: none;
-  color: rgb(44 56 74 / 68%);
-  padding: 10px 10px;
-  border-radius: 5px;
-  font-size: 15px;
-  transition: background-color 0.3s ease;
-  }
-  
-  .admin-navbar a:hover {
-    background: linear-gradient(to bottom right, #5046e5, #5046e5);
-    color: #ffffff;
-  }
+}
 
-  .nav-icon{
-    padding-right: 10px;
-    color: rgb(42, 42, 42);
-  }
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
 
-  .nav-container {
-    height: 100%;
-    overflow-y: auto;
-  }
+body {
+  background: #599fd9;
+  /* background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
+  background: linear-gradient(to right, #599fd9, #c2e59c); */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-  .navheading{
-    font-weight: bold;
-    font-size: 15px;
-    padding-right: 10px;
-    color: rgba(0, 0, 0, 0.68);
-  }
-  
-  .sub-menu hr{
-    margin-top: 10px;
-  }
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+
+.text-gray {
+  color: #aaa;
+}

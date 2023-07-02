@@ -6,7 +6,7 @@ import './BillGenerate.css'; // Import CSS file for styling
 function BillGenerate() {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [patientId, setPatientId] = useState('');
+  const [patientId, setPatientId] = useState('');   // eslint-disable-line
   const [patientFirstName, setPatientFirstName] = useState('');
   const [patientEmail, setPatientEmail] = useState('');
   const [service, setServices] = useState([]);
@@ -120,7 +120,7 @@ function BillGenerate() {
 
       {showModal && (
         <div className="modal-overlay">
-          <div className="modal">
+          <div className="modalarea">
             <h3>Generate Bill</h3>
             <div>
               <span>Patient First Name:</span>
