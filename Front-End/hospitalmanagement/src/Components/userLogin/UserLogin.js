@@ -28,21 +28,26 @@ function UserLogin() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(inputObj),
 			})
-				.then((res) => res.text())
-				.then((resp) => {
-					console.log(resp);
-					toast.success('Success');
+			.then((res) => {
+				if (res.ok) {
+					return res.text();
+				} else {
+					throw new Error('Invalid Credentials');
+				}
+			})
+			.then((resp) => {
+				console.log(resp);
+				toast.success('Success');
 
-					// Store the token in a cookie
-					document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
-					navigate('/otpauth')
-
-					localStorage.setItem('name', name);
-					localStorage.setItem('email', email)
-				})
-				.catch((err) => {
-					toast.error('Login Failed due to: ' + err.message);
-				});
+				// Store the token in a cookie
+				document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
+				localStorage.setItem('email', email)
+				localStorage.setItem('name', name);
+				navigate('/otpauth');
+			})
+			.catch((err) => {
+				toast.error('Login Failed due to: ' + err.message);
+			});
 		}
 	};
 
@@ -93,8 +98,12 @@ function UserLogin() {
 									<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="your_pass" id="your_pass" placeholder="Password" />
 								</div>
 								<div className="form-group">
-									<label><i className="zmdi zmdi-lock"></i></label>
-									<input type="text" value={role} onChange={(e) => setRole(e.target.value)} name="your_pass" id="your_role" placeholder="Role" />
+								<span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span>
+									<select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role" className='widthselect'>
+										<option value="">Select Role</option>
+										<option value="patient">Patient</option>
+										<option value="doctor">Doctor</option>
+									</select>
 								</div>
 								<div className="form-group">
 									<input type="checkbox" name="remember-me" id="remember-me" className="agree-term" />

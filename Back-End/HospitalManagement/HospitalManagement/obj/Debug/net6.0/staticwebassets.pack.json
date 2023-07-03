@@ -1,12 +1,20 @@
 {
   "Files": [
     {
-      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\a063654b-dc32-424e-9b62-5a2197967205.jpg",
-      "PackagePath": "staticwebassets\\uploads\\doctor\\a063654b-dc32-424e-9b62-5a2197967205.jpg"
+      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg",
+      "PackagePath": "staticwebassets\\uploads\\doctor\\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg"
     },
     {
-      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\0df1c339-47de-4c59-8c7e-e75007e51419.jpg",
-      "PackagePath": "staticwebassets\\uploads\\patient\\0df1c339-47de-4c59-8c7e-e75007e51419.jpg"
+      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg",
+      "PackagePath": "staticwebassets\\uploads\\doctor\\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg"
+    },
+    {
+      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\patient\\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg"
+    },
+    {
+      "Id": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg",
+      "PackagePath": "staticwebassets\\uploads\\patient\\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.HospitalManagement.Microsoft.AspNetCore.StaticWebAssets.props",

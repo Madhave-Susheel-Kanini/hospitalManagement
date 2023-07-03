@@ -16,7 +16,7 @@ namespace HospitalManagement.Repository
 
         public async Task<IEnumerable<Doctor>> GetDoctors()
         {
-            return await _context.Doctors.Include(x => x.Patients).ToListAsync();
+            return await _context.Doctors.ToListAsync();
         }
 
         public async Task<Doctor> GetDoctorById(int id)

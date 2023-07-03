@@ -65,7 +65,7 @@ namespace HospitalManagement.Controllers
             var encryptedPassword = Encrypt(userLogin.Password);
             var user = await GetUser(userLogin.Name, encryptedPassword);
 
-            if (user != null && user.Role == "doctor")
+            if (user != null && user.Role == "doctor" && user.Status == "approved")
             {
                 var claims = new[]
                 {

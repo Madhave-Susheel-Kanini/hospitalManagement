@@ -51,7 +51,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -ms-appearance: radio !important; }
   
   .img1 {
-    max-width: 450px;
+    max-width: 250px;
     height: auto; }
   
   figure {
@@ -192,12 +192,25 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     color: #222; }
   
   .signup-form {
-    margin-left: 75px;
+    margin-left: 79px;
     margin-right: 75px;
-    padding-left: 34px; }
+    padding-left: 79px; }
   
   .register-form {
     width: 100%; }
+
+  .widthselect{
+    width: 130px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  .selecttitle{
+    font-size: 15px;
+    font-weight: bold;
+    color: #777;
+  }
   
   .form-group {
     position: relative;
@@ -398,7 +411,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .signin-form {
     margin-right: 90px;
-    margin-left: 80px; }
+    margin-left: 39px; 
+  }
   
   .signin-image1 {
     margin-left: 110px;

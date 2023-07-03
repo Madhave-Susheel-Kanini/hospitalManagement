@@ -125,9 +125,6 @@ namespace HospitalManagement.Migrations
                     b.Property<string>("DateOfBirth")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DoctorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -147,8 +144,6 @@ namespace HospitalManagement.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
 
                     b.ToTable("Patients");
                 });
@@ -202,18 +197,9 @@ namespace HospitalManagement.Migrations
                     b.Navigation("Doctor");
                 });
 
-            modelBuilder.Entity("HospitalManagement.Models.Patient", b =>
-                {
-                    b.HasOne("HospitalManagement.Models.Doctor", null)
-                        .WithMany("Patients")
-                        .HasForeignKey("DoctorId");
-                });
-
             modelBuilder.Entity("HospitalManagement.Models.Doctor", b =>
                 {
                     b.Navigation("Appointments");
-
-                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }

@@ -147,7 +147,7 @@ function DoctorList() {
 
   return (
     <div>
-      <h2>DOCTOR LIST</h2>
+      <h2>Doctor List</h2>
       <div className="card-buttons">
         <button onClick={() => setShowAddModal(true)} className="edit-button">
           Add New Doctor

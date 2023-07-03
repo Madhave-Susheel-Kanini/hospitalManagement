@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JlGgeE6+81qFR4MIoPWYYJiSsgy3G3K1UvBeEwjwp7c=",
+  "Hash": "JUPiqGkajEW5ofZJIvZPYXCs+O0DKqUOKxLytJBDWlM=",
   "Source": "HospitalManagement",
   "BasePath": "_content/HospitalManagement",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\a063654b-dc32-424e-9b62-5a2197967205.jpg",
+      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg",
       "SourceId": "HospitalManagement",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\",
       "BasePath": "_content/HospitalManagement",
-      "RelativePath": "uploads/doctor/a063654b-dc32-424e-9b62-5a2197967205.jpg",
+      "RelativePath": "uploads/doctor/be2d31e9-2089-4168-9db6-81d49af8fd45.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\doctor\\a063654b-dc32-424e-9b62-5a2197967205.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctor\\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg"
     },
     {
-      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\0df1c339-47de-4c59-8c7e-e75007e51419.jpg",
+      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\doctor\\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg",
       "SourceId": "HospitalManagement",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\",
       "BasePath": "_content/HospitalManagement",
-      "RelativePath": "uploads/patient/0df1c339-47de-4c59-8c7e-e75007e51419.jpg",
+      "RelativePath": "uploads/doctor/e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\patient\\0df1c339-47de-4c59-8c7e-e75007e51419.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctor\\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg"
+    },
+    {
+      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg",
+      "SourceId": "HospitalManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\",
+      "BasePath": "_content/HospitalManagement",
+      "RelativePath": "uploads/patient/70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\patient\\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg"
+    },
+    {
+      "Identity": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\uploads\\patient\\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg",
+      "SourceId": "HospitalManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Kanini Software Solutions\\hospitalManagement\\Back-End\\HospitalManagement\\HospitalManagement\\wwwroot\\",
+      "BasePath": "_content/HospitalManagement",
+      "RelativePath": "uploads/patient/b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\patient\\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg"
     }
   ]
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './UserSignUp.css';
 import { Variable } from '../../Variable';
 import axios from 'axios';
-import signinimage from './signup-image.jpg'
+import signinimage from './signup.png'
 
 function Signup() {
     const [name, setName] = useState('');
@@ -79,8 +79,8 @@ function Signup() {
                                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="your_pass" id="your_pass" placeholder="Password" />
                                 </div>
                                 <div className="form-group">
-                                    <label><i className="zmdi zmdi-lock"></i></label>
-                                    <select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role">
+                                    <span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span>
+                                    <select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role" className='widthselect'>
                                         <option value="">Select an option</option>
                                         <option value="patient">Patient</option>
                                         <option value="doctor">Doctor</option>

@@ -84,7 +84,7 @@ function OtpVerification() {
   return (
     <div className="bigbox">
       <div className="bgWhite">
-        <span className='otpclick' onClick={handleGetOTP}>Click here to resend verification code</span>
+        <h6 className='otpclick' onClick={handleGetOTP}><strong>CLICK HERE TO SEND VERIFICATION CODE</strong></h6>
         <div className="title">Verify OTP</div>
         <form onSubmit={handleSubmit} className="mt-5">
           <div className="otpbox">

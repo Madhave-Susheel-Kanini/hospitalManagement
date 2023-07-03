@@ -101,6 +101,19 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
     -ms-border-radius: 20px; }
+
+    .widthselect{
+      width: 130px;
+      padding-left: 10px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    .selecttitle{
+      font-size: 15px;
+      font-weight: bold;
+      color: #777;
+    }
   
   .display-flex {
     justify-content: space-between;
