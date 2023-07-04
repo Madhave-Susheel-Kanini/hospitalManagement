@@ -1,49 +1,132 @@
+/* UserSideHome.css */
+
+/* Navbar */
 .navbarabc {
-    background-color: #f2f2f2;
-    padding: 10px;
-  }
-  
-  .navbar-listabc {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-  
-  .navbar-itemabc {
-    margin: 0 10px;
-  }
-  
-  .navbar-linkabc {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .containerabc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    margin-top: 10px;
-  }
-  
-  .cardabc {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 10px;
-    max-width: 300px;
-  }
-  
-  .card-titleabc {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .card-contentabc {
-    font-size: 14px;
-    color: #666;
-  }
-  
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.navbar-listabc {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.navbar-itemabc {
+  margin: 0 10px;
+}
+
+.navbar-linkabc {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Container and Card */
+.containerabc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cardabc {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+  max-width: 300px;
+}
+
+.card-titleabc {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card-contentabc {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Fix Appointment Button */
+.fix-appointment-button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 400px;
+}
+
+.modal-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content .form-group {
+  margin-bottom: 10px;
+}
+
+.modal-content label {
+  font-weight: bold;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.modal-content button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-content button[type="button"]:first-child {
+  margin-right: 10px;
+}
+
+.modal-content button[type="button"]:hover {
+  background-color: #45a049;
+}

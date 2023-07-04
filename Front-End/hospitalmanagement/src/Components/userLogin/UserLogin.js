@@ -98,8 +98,8 @@ function UserLogin() {
 									<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="your_pass" id="your_pass" placeholder="Password" />
 								</div>
 								<div className="form-group">
-								<span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span>
-									<select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role" className='widthselect'>
+								{/* <span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span> */}
+									<select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role" className='widthselect1'>
 										<option value="">Select Role</option>
 										<option value="patient">Patient</option>
 										<option value="doctor">Doctor</option>

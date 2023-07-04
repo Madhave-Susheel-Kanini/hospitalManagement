@@ -17,3 +17,15 @@
 .content1{
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 57px;
+  }
+}
+
+@media (max-width: 769px) {
+  .content.open {
+    margin-left: 57px;
+  }
+}

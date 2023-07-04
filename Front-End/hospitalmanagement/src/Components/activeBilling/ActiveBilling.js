@@ -84,6 +84,8 @@ function ActiveBilling() {
         fetchData();
     }, []);
 
+    
+
     const fetchData = () => {
         axios
             .get(Variable.api_url + 'Billings')
@@ -97,6 +99,7 @@ function ActiveBilling() {
 
     const handleViewInvoice = (id) => {
         setSelectedId(id);
+        
         const selectedCustomer = getCustomerData(id);
         if (selectedCustomer) {
             console.log('Selected ID:', id);

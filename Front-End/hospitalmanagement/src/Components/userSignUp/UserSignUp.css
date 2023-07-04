@@ -150,7 +150,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin: 0 55px; }
   
   .form-title {
-    margin-bottom: 33px; }
+    margin-bottom: 33px; 
+    margin-top: 33px;
+  }
   
   .signup-image {
     margin-top: 45px; }
@@ -200,10 +202,13 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     width: 100%; }
 
   .widthselect{
-    width: 130px;
+    width: 97%;
     padding-left: 10px;
     border-radius: 5px;
     margin-left: 10px;
+    margin-top: 14px;
+    height: 40px;
+    text-align: left;
   }
 
   .selecttitle{
@@ -214,7 +219,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .form-group {
     position: relative;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     overflow: hidden; }
     .form-group:last-child {
       margin-bottom: 0px; }

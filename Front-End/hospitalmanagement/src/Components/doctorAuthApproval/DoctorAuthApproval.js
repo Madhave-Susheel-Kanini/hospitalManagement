@@ -5,16 +5,35 @@ import './DoctorAuthApproval.css'; // Import CSS file for styling
 
 function DoctorAuthApproval() {
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const [statusFilter, setStatusFilter] = useState('all');
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    const handleFilter = (filter) => {
+        setStatusFilter(filter);
+        filterData(data, filter);
+    };
+
+    const filterData = (data, filter) => {
+        if (filter === 'all') {
+            setFilteredData(data);
+        } else {
+            const filtered = data.filter((item) => item.status === filter);
+            setFilteredData(filtered);
+        }
+    };
+
     const fetchData = () => {
         axios
             .get(Variable.api_url + 'Users')
             .then((response) => {
-                setData(response.data);
+                // Filter the response data to include only items where the role is "doctor"
+                const doctorData = response.data.filter((item) => item.role === 'doctor');
+                setData(doctorData);
+                filterData(doctorData, statusFilter);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -70,8 +89,34 @@ function DoctorAuthApproval() {
     return (
         <div>
             <h2>Doctor Authentication Approval</h2>
+            <div className="filter-buttons">
+                <button
+                    className={statusFilter === 'all' ? 'active' : ''}
+                    onClick={() => handleFilter('all')}
+                >
+                    All
+                </button>
+                <button
+                    className={statusFilter === 'requested' ? 'active' : ''}
+                    onClick={() => handleFilter('requested')}
+                >
+                    Requested
+                </button>
+                <button
+                    className={statusFilter === 'approved' ? 'active' : ''}
+                    onClick={() => handleFilter('approved')}
+                >
+                    Approved
+                </button>
+                <button
+                    className={statusFilter === 'denied' ? 'active' : ''}
+                    onClick={() => handleFilter('denied')}
+                >
+                    Denied
+                </button>
+            </div>
             <div className="card-container">
-                {data.map((item) => (
+            {filteredData.map((item) => (
                     <div key={item.id} className="card">
                         <div className="card-header">
                             <div className="card-header-item">
