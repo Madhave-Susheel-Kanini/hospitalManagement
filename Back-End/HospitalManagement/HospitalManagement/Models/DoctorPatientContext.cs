@@ -10,6 +10,7 @@ namespace HospitalManagement.Models
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Billing> Billings { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         public DoctorPatientContext(DbContextOptions<DoctorPatientContext> options) : base(options)
         {

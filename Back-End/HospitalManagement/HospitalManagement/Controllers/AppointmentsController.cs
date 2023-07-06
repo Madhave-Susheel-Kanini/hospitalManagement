@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
 using HospitalManagement.Repository;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace HospitalManagement.Controllers
 {
@@ -32,7 +34,7 @@ namespace HospitalManagement.Controllers
         {
             return await _appointmentRepository.GetAppointment(id);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
         {
@@ -40,6 +42,7 @@ namespace HospitalManagement.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "patient")]
         public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
         {
             return await _appointmentRepository.PostAppointment(appointment);

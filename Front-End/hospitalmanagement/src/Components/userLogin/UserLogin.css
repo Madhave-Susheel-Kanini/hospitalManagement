@@ -321,6 +321,11 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     padding-left: 20px;
     display: block;
     margin-top: 20px; }
+
+
+    .toastmessage{
+      color: white;
+    }
   
   label.valid {
     display: block;
@@ -494,5 +499,47 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     .social-label {
       margin-right: 0px;
       margin-bottom: 10px; } }
-  
+
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4f7e42;
+        border: 1px solid #ddd;
+        padding: 16px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        border-radius: 10px;
+        color: white;
+      }
+      
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .toastred {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4f0f0f;
+        border: 1px solid #ddd;
+        padding: 16px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        border-radius: 10px;
+        color: white;
+      }
+
+      .toastred.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
   

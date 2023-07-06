@@ -1,12 +1,13 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faHospital, faUsers, faAngleDown, faNotesMedical, faAngleRight, faSignOutAlt, faCog, faFolder, faUserMd, faVial } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faHospital, faUsers, faAngleDown, faNotesMedical, faAngleRight, faSignOutAlt, faCog, faList, faFolder, faUserMd, faVial } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 
 function Navbar() {
   const [expandedItems, setExpandedItems] = useState([]);
+  const [role, setRole] = useState('');
 
   const handleExpand = (itemIndex) => {
     if (expandedItems.includes(itemIndex)) {
@@ -20,72 +21,121 @@ function Navbar() {
     return expandedItems.includes(itemIndex);
   };
 
+  const getCookieValue = (name) => {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const role = getCookieValue('role');
+    setRole(role);
+  }, []);
+
   return (
     <div>
-      <div class="vertical-nav bg-white" id="sidebar">
-        <div class="py-4 px-3 mb-4 bg-light">
-          <div class="media d-flex align-items-center">
-            <div class="media-body">
-              <h4 class="m-0">HOSPITAL MANAGEMENT</h4>
-              <p class="font-weight-light text-muted mb-0">Dashboard</p>
+      <div className="vertical-nav bg-white" id="sidebar">
+        <div className="py-4 px-3 mb-4 bg-light">
+          <div className="media d-flex align-items-center">
+            <div className="media-body">
+              <h4 className="m-0">HOSPITAL MANAGEMENT</h4>
+              <p className="font-weight-light text-muted mb-0">Dashboard</p>
             </div>
           </div>
         </div>
 
-        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+        <p className="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">GENERAL</p>
 
-        <ul class="nav flex-column bg-white mb-0">
-          <li class="nav-item">
-            <a href="patientlist" class="nav-link text-dark font-italic">
-              <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+        <ul className="nav flex-column bg-white mb-0">
+          <li className="nav-item">
+            <a href="patientlist" className="nav-link text-dark font-italic">
+              <FontAwesomeIcon icon={faUsers} className="mr-3" />
               Patients
             </a>
           </li>
-          <li class="nav-item">
-            <a href="doctorlist" class="nav-link text-dark font-italic">
-              <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+          <li className="nav-item">
+            <a href="doctorlist" className="nav-link text-dark font-italic">
+              <FontAwesomeIcon icon={faUserMd} className="mr-3" />
               Doctors
             </a>
           </li>
-          <li class="nav-item">
-            <a href="doctorauthapproval" class="nav-link text-dark font-italic">
-              <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-              Doctor Approval
+          <li className="nav-item">
+            <a href="userlist" className="nav-link text-dark font-italic">
+              <FontAwesomeIcon icon={faList} className="mr-3" />
+              User List
             </a>
           </li>
-          <li class="nav-item">
-            <a href="billgenerate" class="nav-link text-dark font-italic">
-              <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-              Bill Generate
-            </a>
-          </li>
+
+          {role !== 'doctor' && (
+            <React.Fragment>
+              <li className="nav-item">
+                <a href="doctorauthapproval" className="nav-link text-dark font-italic">
+                  <FontAwesomeIcon icon={faUser} className="mr-3" />
+                  Doctor Approval
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="billgenerate" className="nav-link text-dark font-italic">
+                  <FontAwesomeIcon icon={faFolder} className="mr-3" />
+                  Bill Generate
+                </a>
+              </li>
+            </React.Fragment>
+          )}
         </ul>
 
-        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
+        {role !== 'doctor' && (
+          <React.Fragment>
+            <p className="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
+          </React.Fragment>
+        )}
 
-        <ul class="nav flex-column bg-white mb-0">
-          <li class="nav-item">
-            <a href="activebillings" class="nav-link text-dark font-italic">
-              <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-              Invoice Download
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="activebillings" class="nav-link text-dark font-italic">
-              <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
-              Active Billings
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link text-dark font-italic">
-              <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
-              Pie charts
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link text-dark font-italic">
-              <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
-              Line charts
+        {role === 'doctor' && (
+          <React.Fragment>
+            <p className="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Actions</p>
+
+            <ul className="nav flex-column bg-white mb-0">
+              <li className="nav-item">
+                <a href="viewappointment" className="nav-link text-dark font-italic">
+                  <FontAwesomeIcon icon={faNotesMedical} className="mr-3" />
+                  View All Appointments
+                </a>
+              </li>
+            </ul>
+          </React.Fragment>
+        )}
+
+
+        <ul className="nav flex-column bg-white mb-0">
+          {role !== 'doctor' && (
+            <React.Fragment>
+              <li className="nav-item">
+                <a href="invoiceDownload" className="nav-link text-dark font-italic">
+                  <FontAwesomeIcon icon={faVial} className="mr-3" />
+                  Invoice Download
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="activebillings" className="nav-link text-dark font-italic">
+                  <FontAwesomeIcon icon={faHospital} className="mr-3" />
+                  Active Billings
+                </a>
+              </li>
+            </React.Fragment>
+          )}
+        </ul>
+
+        <p className="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">SETTINGS</p>
+        <ul className="nav flex-column bg-white mb-0">
+          <li className="nav-item">
+            <a href="logout" className="nav-link text-dark font-italic">
+              <FontAwesomeIcon icon={faSignOutAlt} className="mr-3" />
+              Logout
             </a>
           </li>
         </ul>

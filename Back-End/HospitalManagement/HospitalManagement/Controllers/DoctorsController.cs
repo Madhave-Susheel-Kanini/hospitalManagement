@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
 using HospitalManagement.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalManagement.Controllers
 {
+  
     [Route("api/[controller]")]
     [ApiController]
     public class DoctorsController : ControllerBase
@@ -22,6 +24,7 @@ namespace HospitalManagement.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Doctor>>> Get()
         {
             var doctors = await _doctorRepository.GetDoctors();
@@ -38,8 +41,9 @@ namespace HospitalManagement.Controllers
             }
             return Ok(doctor);
         }
-        //[Authorize(Roles = "Course")]
+     
         [HttpPost]
+        [Authorize(Roles = "doctor, Admin")]
         public async Task<ActionResult<Doctor>> Post([FromForm] Doctor doctor, IFormFile imageFile)
         {
 
@@ -55,8 +59,9 @@ namespace HospitalManagement.Controllers
                 return BadRequest(ModelState);
             }
         }
-        //[Authorize(Roles = "Course")]
+        //[Authorize(Roles = "doctor")]
         [HttpPut("{id}")]
+        [Authorize(Roles = "doctor, Admin")]
         public async Task<ActionResult<Doctor>> Put(int id, [FromForm] Doctor doctor, IFormFile imageFile)
         {
             try
@@ -70,8 +75,8 @@ namespace HospitalManagement.Controllers
                 return BadRequest(ModelState);
             }
         }
-        //[Authorize(Roles = "Course")]
         [HttpDelete("{id}")]
+        [Authorize(Roles = "doctor, Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _doctorRepository.DeleteDoctor(id);

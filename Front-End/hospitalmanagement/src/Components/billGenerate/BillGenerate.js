@@ -16,9 +16,24 @@ function BillGenerate() {
     fetchData();
   }, []);
 
+  const getCookieValue = (name) => {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+    }
+    return null;
+  };
+
   const fetchData = () => {
     axios
-      .get(Variable.api_url + 'Patients')
+      .get(Variable.api_url + 'Patients', {
+        headers: {
+          Authorization: `Bearer ${getCookieValue('token')}`,
+        }
+      })
       .then((response) => {
         setData(response.data);
       })
@@ -48,7 +63,11 @@ function BillGenerate() {
 
     // Send POST request to the billing API endpoint
     axios
-      .post('https://localhost:7193/api/Billings', billData)
+      .post('https://localhost:7193/api/Billings', billData, {
+        headers: {
+          Authorization: `Bearer ${getCookieValue('token')}`,
+        }
+      })
       .then((response) => {
         console.log('Bill generated:', response.data);
         // Reset the form and close the modal

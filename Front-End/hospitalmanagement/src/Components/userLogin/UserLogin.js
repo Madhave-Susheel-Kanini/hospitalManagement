@@ -28,34 +28,71 @@ function UserLogin() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(inputObj),
 			})
-			.then((res) => {
-				if (res.ok) {
-					return res.text();
-				} else {
-					throw new Error('Invalid Credentials');
-				}
-			})
-			.then((resp) => {
-				console.log(resp);
-				toast.success('Success');
-
-				// Store the token in a cookie
-				document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
-				localStorage.setItem('email', email)
-				localStorage.setItem('name', name);
-				navigate('/otpauth');
-			})
-			.catch((err) => {
-				toast.error('Login Failed due to: ' + err.message);
-			});
+				.then((res) => {
+					if (res.ok) {
+						return res.text();
+					} else {
+						throw new Error('Invalid Credentials');
+					}
+				})
+				.then((resp) => {
+					showToast();
+					console.log(resp);
+					document.cookie = `token=${resp}; expires=${getCookieExpirationDate()}; path=/`;
+					document.cookie = `email=${email}; expires=${getCookieExpirationDate()}; path=/`;
+					document.cookie = `username=${name}; expires=${getCookieExpirationDate()}; path=/`;
+					document.cookie = `role=${role}; expires=${getCookieExpirationDate()}; path=/`;
+					// localStorage.setItem('email', email)
+					// localStorage.setItem('username', name);
+					// localStorage.setItem('role', role);
+					if(role === "doctor"){
+					setTimeout(function() {
+						window.location.href = '/otpauth';
+					  }, 3000);
+					}else{
+						window.location.href = '/otpauth';
+					}
+					
+				})
+				.catch((err) => {
+					toast.error('Login Failed due to: ' + err.message);
+					showToast1()
+				});
 		}
 	};
 
 	const getCookieExpirationDate = () => {
 		const expirationDate = new Date();
-		expirationDate.setMinutes(expirationDate.getMinutes() + 10); // Set expiration to 10 minutes from now
+		expirationDate.setMinutes(expirationDate.getMinutes() + 30); 
 		return expirationDate.toUTCString();
 	};
+
+	function showToast() {
+		var toastModal = document.getElementById("toastModal");
+		toastModal.classList.add("show");
+		setTimeout(function () {
+		  hideToast();
+		}, 3000); 
+	  }
+
+	  function showToast1() {
+		console.log("ABC")
+		var toastModal = document.getElementById("toastModal1");
+		toastModal.classList.add("show");
+		setTimeout(function () {
+		  hideToast1();
+		}, 3000); 
+	  }
+	  
+	  function hideToast() {
+		var toastModal = document.getElementById("toastModal");
+		toastModal.classList.remove("show");
+	  }
+
+	  function hideToast1() {
+		var toastModal = document.getElementById("toastModal1");
+		toastModal.classList.remove("show");
+	  }
 
 	const validate = () => {
 		let result = true;
@@ -80,7 +117,6 @@ function UserLogin() {
 						<div className="signin-image">
 							<figure><img src={signinimage} alt='' /></figure>
 							<br></br>
-							{/* <span className="signup-image-link">Create an account</span> */}
 						</div>
 						<div className="signin-form">
 							<h2 className="form-title">Sign In</h2>
@@ -98,7 +134,7 @@ function UserLogin() {
 									<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="your_pass" id="your_pass" placeholder="Password" />
 								</div>
 								<div className="form-group">
-								{/* <span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span> */}
+									{/* <span className='selecttitle'><i className="zmdi zmdi-lock"></i>ROLE : </span> */}
 									<select value={role} onChange={(e) => setRole(e.target.value)} name="your_role" id="your_role" className='widthselect1'>
 										<option value="">Select Role</option>
 										<option value="patient">Patient</option>
@@ -124,6 +160,19 @@ function UserLogin() {
 						</div>
 					</div>
 				</div>
+
+				<div id="toastModal" class="toast">
+					<div class="toast-content">
+						<span className='toastmessage'>Login Successful</span>
+					</div>
+				</div>
+
+				<div id="toastModal1" class="toastred">
+					<div class="toast-content">
+						<span className='toastmessage'>Incorrect Username/Password</span>
+					</div>
+				</div>
+
 			</section>
 
 		</div>

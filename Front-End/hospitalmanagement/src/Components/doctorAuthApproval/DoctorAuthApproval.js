@@ -1,15 +1,18 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Variable } from '../../Variable';
-import './DoctorAuthApproval.css'; // Import CSS file for styling
+import './DoctorAuthApproval.css';
 
 function DoctorAuthApproval() {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [statusFilter, setStatusFilter] = useState('all');
+    
 
     useEffect(() => {
         fetchData();
+        const token = getCookieValue('token');
     }, []);
 
     const handleFilter = (filter) => {
@@ -26,11 +29,26 @@ function DoctorAuthApproval() {
         }
     };
 
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return decodeURIComponent(cookie.substring(name.length + 1));
+          }
+        }
+        return null;
+      };
+
     const fetchData = () => {
         axios
-            .get(Variable.api_url + 'Users')
+            .get(Variable.api_url + 'Users', {
+                headers: {
+                    Authorization: `Bearer ${getCookieValue('token')}`,
+                  }
+            })
             .then((response) => {
-                // Filter the response data to include only items where the role is "doctor"
+               
                 const doctorData = response.data.filter((item) => item.role === 'doctor');
                 setData(doctorData);
                 filterData(doctorData, statusFilter);
@@ -41,21 +59,21 @@ function DoctorAuthApproval() {
     };
 
     const handleApprove = (id) => {
-        // Find the item by ID in the data array
         const selectedItem = data.find((item) => item.id === id);
 
-        // Create the update object with existing inputs and updated status
         const updatedItem = {
             ...selectedItem,
             status: 'approved'
         };
 
-        // Update the status to "approved" in the backend
         axios
-            .put(Variable.api_url + `Users/${id}`, updatedItem)
+            .put(Variable.api_url + `Users/${id}`, updatedItem, {
+                headers: {
+                    Authorization: `Bearer ${getCookieValue('token')}`,
+                  }
+            })
             .then((response) => {
                 console.log('Status updated:', response.data);
-                // Fetch the updated data again
                 fetchData();
             })
             .catch((error) => {
@@ -64,21 +82,21 @@ function DoctorAuthApproval() {
     };
 
     const handleDeny = (id) => {
-        // Find the item by ID in the data array
         const selectedItem = data.find((item) => item.id === id);
 
-        // Create the update object with existing inputs and updated status
         const updatedItem = {
             ...selectedItem,
             status: 'denied'
         };
 
-        // Update the status to "denied" in the backend
         axios
-            .put(Variable.api_url + `Users/${id}`, updatedItem)
+            .put(Variable.api_url + `Users/${id}`, updatedItem, {
+                headers: {
+                    Authorization: `Bearer ${getCookieValue('token')}`,
+                  }
+            })
             .then((response) => {
                 console.log('Status updated:', response.data);
-                // Fetch the updated data again
                 fetchData();
             })
             .catch((error) => {

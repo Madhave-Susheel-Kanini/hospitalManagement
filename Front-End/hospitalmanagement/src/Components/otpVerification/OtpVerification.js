@@ -10,19 +10,30 @@ function OtpVerification() {
 
   const [randomNumber, setRandomNumber] = useState('');
   const navigate = useNavigate();
+  
 
 
   const handleGetOTP = () => {
     sendEmail();
   }
 
-// Empty dependency array to trigger the effect only once
+  const getCookieValue = (name) => {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+    }
+    return null;
+  };
+
 
   function sendEmail() {
-    const email = localStorage.getItem('email');
+    const email = getCookieValue('email')
     const generatedNumber = Math.floor(Math.random() * 9000) + 1000;
 
-    setRandomNumber(generatedNumber); // Store the generated number in the state
+    setRandomNumber(generatedNumber);
 
     const templateParams = {
       to_name: 'Maddy',
@@ -74,7 +85,13 @@ function OtpVerification() {
     });
     if (otp === randomNumber.toString()) {
       console.log("Correct otp");
-      navigate('/'); // Navigate to the '/home' route
+      const role = getCookieValue('role')
+      if(role === "patient"){
+      navigate('/userside');}
+      else{
+        navigate('/viewappointment');
+        window.location.reload()
+      }
     } else {
       console.log("Invalid otp");
     }

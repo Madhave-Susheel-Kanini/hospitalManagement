@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace HospitalManagement.Controllers
 {
@@ -63,6 +65,7 @@ namespace HospitalManagement.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Id)
@@ -113,6 +116,7 @@ namespace HospitalManagement.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (_context.Users == null)

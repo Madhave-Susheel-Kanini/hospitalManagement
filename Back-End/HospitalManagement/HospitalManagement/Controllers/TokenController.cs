@@ -16,6 +16,7 @@ namespace HospitalManagement.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly DoctorPatientContext _context;
+        private const string AdminRole = "Admin";
 
         public TokenController(IConfiguration configuration, DoctorPatientContext context)
         {
@@ -131,6 +132,52 @@ namespace HospitalManagement.Controllers
                     }
                 }
             }
+        }
+        
+        [HttpPost("Admin")]
+        public async Task<IActionResult> PostStaff(Admin staffData)
+        {
+            if (staffData != null && !string.IsNullOrEmpty(staffData.Admin_name) && !string.IsNullOrEmpty(staffData.Admin_password))
+            {
+                if (staffData.Admin_name == "Admin" && staffData.Admin_password == "Admin@123")
+                {
+                    var claims = new[]
+                    {
+                new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                new Claim("AdminId", "1"), // Set the admin ID accordingly
+                new Claim("Admin_name", staffData.Admin_name),
+                new Claim("Admin_password", staffData.Admin_password),
+                new Claim(ClaimTypes.Role, AdminRole)
+            };
+
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var token = new JwtSecurityToken(
+                        _configuration["Jwt:Issuer"],
+                        _configuration["Jwt:Audience"],
+                        claims,
+                        expires: DateTime.UtcNow.AddDays(1),
+                        signingCredentials: signIn);
+
+                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                }
+                else
+                {
+                    return BadRequest("Invalid credentials");
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
+        private async Task<Admin> GetStaff(string adminName, string adminPassword)
+        {
+            return await _context.Admins.FirstOrDefaultAsync(s => s.Admin_name == adminName && s.Admin_password == adminPassword);
         }
     }
 }

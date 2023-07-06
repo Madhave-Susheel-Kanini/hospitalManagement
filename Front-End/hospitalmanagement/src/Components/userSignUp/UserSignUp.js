@@ -15,6 +15,8 @@ function Signup() {
     const [address, setAddress] = useState('');
     const [gender, setGender] = useState('');
 
+
+
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -32,6 +34,23 @@ function Signup() {
             status: role === "patient" ? "approved" : "requested"
         };
 
+        const uppercaseRegex = /[A-Z]/;
+        const numberRegex = /[0-9]/;
+        const isValidPassword = uppercaseRegex.test(password) && numberRegex.test(password);
+
+        if (!isValidPassword) {
+            showToast2();
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isValidEmail = emailRegex.test(email);
+
+        if (!isValidEmail) {
+            showToast3();
+            return;
+        }
+
         axios
             .post(Variable.api_url + 'Users', regobj, {
                 headers: {
@@ -48,14 +67,68 @@ function Signup() {
                 setPhone('');
                 setEmail('');
                 setPassword('');
-                navigate('/userlogin')
-                // Perform any necessary actions after successful POST request
+                showToast();
+
+                setTimeout(function () {
+                    window.location.href = '/userlogin';
+                }, 3000);
             })
             .catch((error) => {
                 console.error('Error adding new item:', error);
-                // Perform any necessary actions for error handling
             });
     };
+
+    function showToast() {
+        var toastModal = document.getElementById("toastModal");
+        toastModal.classList.add("show");
+        setTimeout(function () {
+            hideToast();
+        }, 3000);
+    }
+
+    function hideToast() {
+        var toastModal = document.getElementById("toastModal");
+        toastModal.classList.remove("show");
+    }
+
+    function showToast1() {
+        var toastModal = document.getElementById("toastModal1");
+        toastModal.classList.add("show");
+        setTimeout(function () {
+            hideToast1();
+        }, 3000);
+    }
+
+    function hideToast1() {
+        var toastModal = document.getElementById("toastModal1");
+        toastModal.classList.remove("show");
+    }
+
+    function showToast2() {
+        var toastModal = document.getElementById("toastModal2");
+        toastModal.classList.add("show");
+        setTimeout(function () {
+            hideToast2();
+        }, 3000);
+    }
+
+    function hideToast2() {
+        var toastModal = document.getElementById("toastModal2");
+        toastModal.classList.remove("show");
+    }
+
+    function showToast3() {
+        var toastModal = document.getElementById("toastModal3");
+        toastModal.classList.add("show");
+        setTimeout(function () {
+            hideToast3();
+        }, 3000);
+    }
+
+    function hideToast3() {
+        var toastModal = document.getElementById("toastModal3");
+        toastModal.classList.remove("show");
+    }
 
     return (
         <div className='main'>
@@ -115,17 +188,34 @@ function Signup() {
                                     <input type="submit" name="signin" id="signin" className="form-submit1" value="Sign Up" />
                                 </div>
                             </form>
-                            {/* <div className="social-login">
-								<span className="social-label">Or Sign Up with</span>
-								<ul className="socials">
-									<li><i className="display-flex-center zmdi zmdi-facebook"></i></li>
-									<li><i className="display-flex-center zmdi zmdi-twitter"></i></li>
-									<li><i className="display-flex-center zmdi zmdi-google"></i></li>
-								</ul>
-							</div> */}
                         </div>
                     </div>
                 </div>
+
+                <div id="toastModal" class="toast">
+                    <div class="toast-content">
+                        <span className='toastmessage'>Registration Successful</span>
+                    </div>
+                </div>
+
+                <div id="toastModal1" class="toastred">
+                    <div class="toast-content">
+                        <span className='toastmessage'>Registration Unsuccessful</span>
+                    </div>
+                </div>
+
+                <div id="toastModal2" class="toastred">
+                    <div class="toast-content">
+                        <span className='toastmessage'>Password must contain 1 UpperCase, 1 Special Character</span>
+                    </div>
+                </div>
+
+                <div id="toastModal3" class="toastred">
+                    <div class="toast-content">
+                        <span className='toastmessage'>Invalid E-Mail ID format</span>
+                    </div>
+                </div>
+
             </section>
 
         </div>

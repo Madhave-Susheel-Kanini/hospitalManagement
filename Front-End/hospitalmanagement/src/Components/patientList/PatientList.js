@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Variable } from '../../Variable';
 import './PatientList.css';
-
+import { useNavigate,Link } from 'react-router-dom';
 function PatientList() {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [selectedPatient, setSelectedPatient] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -17,9 +19,31 @@ function PatientList() {
         phoneNumber: '',
         address: '',
     });
+    const [role, setRole] = useState('');
+    useEffect(() => {
+        const isAuthenticated = getCookieValue('token');
+        if (!isAuthenticated) {
+        console.log("Nil")
+        } else {
+          fetchData();
+        }
+      }, [navigate]);
+      
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return decodeURIComponent(cookie.substring(name.length + 1));
+          }
+        }
+        return null;
+      };
 
     useEffect(() => {
         fetchData();
+        const role = getCookieValue('role');
+        setRole(role);
     }, []);
 
     const handleImageChange = (e) => {
@@ -38,7 +62,11 @@ function PatientList() {
 
     const fetchData = () => {
         axios
-            .get(Variable.api_url + 'Patients')
+            .get(Variable.api_url + 'Patients', {
+                headers: {
+                  Authorization: `Bearer ${getCookieValue('token')}`,
+                },
+              })
             .then((response) => {
                 setData(response.data);
             })
@@ -69,17 +97,15 @@ function PatientList() {
         axios
             .put(Variable.api_url + `Patients/${selectedPatient.id}`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${getCookieValue('token')}`,
                 },
-            })
+              })
             .then((response) => {
                 console.log('Patient updated:', response.data);
                 setShowEditModal(false);
-                // Perform any necessary actions after successful update
             })
             .catch((error) => {
                 console.error('Error updating patient:', error);
-                // Handle error scenarios
             });
     };
 
@@ -92,15 +118,17 @@ function PatientList() {
 
     const handleDelete = (patientId) => {
         axios
-            .delete(Variable.api_url + `Patients/${patientId}`)
+            .delete(Variable.api_url + `Patients/${patientId}`, {
+                headers: {
+                  Authorization: `Bearer ${getCookieValue('token')}`,
+                },
+              })
             .then((response) => {
                 console.log('Patient deleted:', response.data);
                 setData((prevData) => prevData.filter((item) => item.id !== patientId));
-                // Perform any necessary actions after successful delete
             })
             .catch((error) => {
                 console.error('Error deleting patient:', error);
-                // Handle error scenarios
             });
     };
 
@@ -125,9 +153,9 @@ function PatientList() {
         axios
             .post(Variable.api_url + 'Patients', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${getCookieValue('token')}`,
                 },
-            })
+              })
             .then((response) => {
                 console.log('Patient added:', response.data);
                 setShowAddModal(false);
@@ -142,22 +170,24 @@ function PatientList() {
                     imageFile: null,
                 });
                 fetchData();
-                // Perform any necessary actions after successful add
             })
             .catch((error) => {
                 console.error('Error adding patient:', error);
-                // Handle error scenarios
             });
     };
 
     return (
         <div>
             <h2>Patient List</h2>
-            <div className="card-buttons">
-                <button onClick={() => setShowAddModal(true)} className="edit-button">
-                    Add New Patient
-                </button>
-            </div>
+            {role !== 'doctor' && (
+                <React.Fragment>
+                    <div className="card-buttons">
+                        <button onClick={() => setShowAddModal(true)} className="edit-button">
+                            Add New Patient
+                        </button>
+                    </div>
+                </React.Fragment>
+            )}
             <div className="card-container">
                 {data.map((item) => (
                     <div key={item.id} className="card">
@@ -198,14 +228,18 @@ function PatientList() {
                                 <span>{item.gender}</span>
                             </div>
                         </div>
-                        <div className="card-buttons">
-                            <button onClick={() => handleEdit(item)} className="edit-button">
-                                Edit
-                            </button>
-                            <button onClick={() => handleDelete(item.id)} className="delete-button">
-                                Delete
-                            </button>
-                        </div>
+                        {role !== 'doctor' && (
+                            <React.Fragment>
+                                <div className="card-buttons">
+                                    <button onClick={() => handleEdit(item)} className="edit-button">
+                                        Edit
+                                    </button>
+                                    <button onClick={() => handleDelete(item.id)} className="delete-button">
+                                        Delete
+                                    </button>
+                                </div>
+                            </React.Fragment>
+                        )}
                     </div>
                 ))}
             </div>

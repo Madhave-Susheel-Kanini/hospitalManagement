@@ -1,0 +1,41 @@
+.userapproval-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .usercard {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .userfirst-card {
+    background-color: #f5f5f5;
+    color: black;
+  }
+  
+  .usercard-content {
+    padding: 10px;
+  }
+  
+  .usercard-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .useraccess-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .down {
+    margin-top: 20px;
+  }

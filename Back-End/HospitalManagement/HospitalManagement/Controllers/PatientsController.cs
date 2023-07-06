@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
 using HospitalManagement.Repository;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace HospitalManagement.Controllers
 {
@@ -20,7 +22,7 @@ namespace HospitalManagement.Controllers
         {
             _patientRepository = patientRepository;
         }
-
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> Get()
         {
@@ -37,6 +39,7 @@ namespace HospitalManagement.Controllers
             }
             return Ok(patient);
         }
+        [Authorize(Roles = "Admin, patient")]
         [HttpPost]
         public async Task<ActionResult<Patient>> Post([FromForm] Patient patient, IFormFile imageFile)
         {
@@ -53,6 +56,7 @@ namespace HospitalManagement.Controllers
                 return BadRequest(ModelState);
             }
         }
+        [Authorize(Roles = "Admin, patient")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Patient>> Put(int id, [FromForm] Patient patient, IFormFile imageFile)
         {
@@ -67,7 +71,7 @@ namespace HospitalManagement.Controllers
                 return BadRequest(ModelState);
             }
         }
-        //[Authorize(Roles = "Course")]
+        [Authorize(Roles = "Admin, patient")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

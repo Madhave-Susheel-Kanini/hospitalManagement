@@ -12,6 +12,11 @@ import InvoiceDownload from './Components/invoiceDownload/InvoiceDownload';
 import ActiveBilling from './Components/activeBilling/ActiveBilling';
 import DoctorList from './Components/doctorList/DoctorList';
 import UserSideHome from './Components/userSideHome/UserSideHome';
+import Logout from './Components/logout/Logout';
+import ViewAppointment from './Components/viewAppointments/ViewAppointment';
+import UserList from './Components/userList/UserList';
+import AdminLogin from './Components/adminLogin/AdminLogin';
+import DoctorLandingPage from './Components/doctorLandingPage/DoctorLandingPage';
 
 function App() {
   const shouldRenderSidebar =
@@ -19,6 +24,7 @@ function App() {
     window.location.pathname !== '/otpauth' &&
     window.location.pathname !== '/invoicedownload' &&
     window.location.pathname !== '/userside' &&
+    window.location.pathname !== '/adminlogin' &&
     window.location.pathname !== '/usersignup';
 
   return (
@@ -37,6 +43,11 @@ function App() {
             <Route path="/activebillings" element={<ActiveBilling />} />
             <Route path="/doctorlist" element={<DoctorList />} />
             <Route path="/userside" element={<UserSideHome />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/viewappointment" element={<ViewAppointment />} />
+            <Route path="/userlist" element={<UserList />} />
+            <Route path="/adminlogin" element={<AdminLogin />} />
+            <Route path="/doctorlanding" element={<DoctorLandingPage />} />
           </Routes>
         </div>
       </div>

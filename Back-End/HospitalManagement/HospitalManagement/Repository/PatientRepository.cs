@@ -40,7 +40,15 @@ namespace HospitalManagement.Repository
 
         public async Task<bool> DeletePatient(int id)
         {
-            throw new NotImplementedException();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null)
+            {
+                return false;
+            }
+
+            _context.Patients.Remove(patient);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<Patient> GetPatientById(int id)

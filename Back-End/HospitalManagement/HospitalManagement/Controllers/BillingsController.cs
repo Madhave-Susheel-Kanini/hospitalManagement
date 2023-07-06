@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalManagement.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace HospitalManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BillingsController : ControllerBase

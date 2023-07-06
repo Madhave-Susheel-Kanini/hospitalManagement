@@ -1,11 +1,11 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\3166e5e1-b28f-494f-83cd-f65520ad1638.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>HospitalManagement</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/HospitalManagement</BasePath>
-      <RelativePath>uploads/doctor/be2d31e9-2089-4168-9db6-81d49af8fd45.jpg</RelativePath>
+      <RelativePath>uploads/doctor/3166e5e1-b28f-494f-83cd-f65520ad1638.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -14,14 +14,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\be2d31e9-2089-4168-9db6-81d49af8fd45.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\3166e5e1-b28f-494f-83cd-f65520ad1638.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\d907cc8b-810f-4888-b2cc-0b790c9cedf1.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>HospitalManagement</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/HospitalManagement</BasePath>
-      <RelativePath>uploads/doctor/e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg</RelativePath>
+      <RelativePath>uploads/doctor/d907cc8b-810f-4888-b2cc-0b790c9cedf1.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -30,39 +30,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\e94b07bc-35d4-4b86-9977-fd9f6cbf8e39.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\patient\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>HospitalManagement</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/HospitalManagement</BasePath>
-      <RelativePath>uploads/patient/70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\patient\70ddbf53-e591-4fb9-8b83-5269545ab5a3.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\patient\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>HospitalManagement</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/HospitalManagement</BasePath>
-      <RelativePath>uploads/patient/b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\patient\b7b8b927-cb3e-4ee8-83c1-610d10c15d30.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\doctor\d907cc8b-810f-4888-b2cc-0b790c9cedf1.jpg))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

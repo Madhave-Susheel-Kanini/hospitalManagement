@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalManagement.Migrations
 {
     [DbContext(typeof(DoctorPatientContext))]
-    [Migration("20230703104816_init")]
+    [Migration("20230704175819_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,6 +24,25 @@ namespace HospitalManagement.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("HospitalManagement.Models.Admin", b =>
+                {
+                    b.Property<int>("Admin_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Admin_id"));
+
+                    b.Property<string>("Admin_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Admin_password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Admin_id");
+
+                    b.ToTable("Admins");
+                });
 
             modelBuilder.Entity("HospitalManagement.Models.Appointment", b =>
                 {

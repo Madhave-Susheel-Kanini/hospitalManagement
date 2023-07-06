@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Variable } from '../../Variable';
@@ -77,6 +78,17 @@ function ActiveBilling() {
         },
     });
 
+    const getCookieValue = (name) => {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return decodeURIComponent(cookie.substring(name.length + 1));
+          }
+        }
+        return null;
+      };
+      
     const [data, setData] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
 
@@ -84,11 +96,13 @@ function ActiveBilling() {
         fetchData();
     }, []);
 
-    
-
     const fetchData = () => {
         axios
-            .get(Variable.api_url + 'Billings')
+            .get(Variable.api_url + 'Billings', {
+                headers: {
+                    Authorization: `Bearer ${getCookieValue('token')}`,
+                  }
+            })
             .then((response) => {
                 setData(response.data);
             })
@@ -106,7 +120,6 @@ function ActiveBilling() {
             console.log('Selected Customer Name:', selectedCustomer.patientFirstName);
             console.log('Selected Customer Name:', selectedCustomer.service);
             console.log('Selected Customer Services:', selectedCustomer.service.split(','));
-            // Add additional console logs for other properties if needed
         }
     };
 
